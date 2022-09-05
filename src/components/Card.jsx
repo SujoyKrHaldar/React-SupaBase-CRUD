@@ -19,6 +19,8 @@ function Card({ data }) {
         >
           View
         </Link>
+
+        <Link to={`/${data.name.trim().replaceAll(" ", "-")}/edit`}>Edit</Link>
       </div>
     </div>
   );

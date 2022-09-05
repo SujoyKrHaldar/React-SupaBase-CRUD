@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import supabase from "../config/supabase";
 
@@ -37,6 +37,12 @@ function View() {
           <p>{singleData.author}</p>
           <p className="text-[#999999]">{singleData.rating}/5</p>
           <p className="text-[0.9rem] text-[#999999]">{singleData.about}</p>
+          <Link
+            className="rounded-md inline-block px-[1.3rem] py-[0.3rem] bg-[#2e2e2e] hover:bg-[#101010] duration-200"
+            to={`/${slug}/edit`}
+          >
+            Update data
+          </Link>
         </div>
       </div>
     </>
