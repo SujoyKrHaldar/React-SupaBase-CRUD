@@ -1,5 +1,7 @@
 # CRUD Application React & Supabase
 
+## Your favourite Game.
+
 **Frontend:** React, TailwindCSS
 
 **Backend:** SupaBase
