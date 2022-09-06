@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import supabase from "../config/supabase";
 
 function View() {
-  let { slug } = useParams();
-  const name = slug.replaceAll("-", " ");
+  let { id } = useParams();
 
   const [singleData, setSingleData] = useState([]);
 
@@ -12,7 +11,7 @@ function View() {
     const { data, error } = await supabase
       .from("Books")
       .select()
-      .eq("name", name)
+      .eq("id", id)
       .single();
 
     if (error) {
@@ -25,7 +24,7 @@ function View() {
 
   useEffect(() => {
     dataFetching();
-  }, [slug]);
+  }, [id]);
 
   console.log(singleData);
 
@@ -39,7 +38,7 @@ function View() {
           <p className="text-[0.9rem] text-[#999999]">{singleData.about}</p>
           <Link
             className="rounded-md inline-block px-[1.3rem] py-[0.3rem] bg-[#2e2e2e] hover:bg-[#101010] duration-200"
-            to={`/${slug}/edit`}
+            to={`/edit/${id}`}
           >
             Update data
           </Link>

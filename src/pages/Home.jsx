@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import supabase from "../config/supabase";
 
 function Home() {
-  const [fetchMessage, setFetchMessage] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
   const [fetchData, setFetchData] = useState(null);
 
   const dataFetching = async () => {
@@ -13,13 +14,13 @@ function Home() {
       .order("id", { ascending: false });
 
     if (error) {
-      setFetchMessage("Could not fetch data !");
+      setErrorMsg("Could not fetch data !");
       setFetchData(null);
     }
 
     if (data) {
-      setFetchMessage("All Books");
       setFetchData(data);
+      console.log(data);
     }
   };
 
@@ -29,15 +30,18 @@ function Home() {
 
   return (
     <>
-      <section>
-        {fetchMessage && (
-          <h1 className="font-semibold text-3xl">{fetchMessage}</h1>
-        )}
-        {fetchData && (
+      <section className="min-h-[76vh]">
+        {errorMsg && <h1 className="font-semibold text-3xl">{errorMsg}</h1>}
+
+        {fetchData && fetchData.length > 0 ? (
           <div className="grid gap-4 mt-8 grid-cols-3">
             {fetchData.map((data) => (
               <Card data={data} key={data.id} />
             ))}
+          </div>
+        ) : (
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center space-y-6">
+            <h1 className="font-semibold text-5xl">Loading ...</h1>
           </div>
         )}
       </section>

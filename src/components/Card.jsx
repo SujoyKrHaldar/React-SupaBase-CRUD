@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Card({ data }) {
   return (
-    <div className="flex-1 p-8 border-2 border-[#515151] rounded-md flex flex-col justify-between gap-4">
+    <div className="flex-1 p-8  bg-[#1c1c1c] hover:bg-[#1d1d1d] flex flex-col justify-between gap-4">
       <div className="space-y-1">
         <p className="font-bold text-3xl">{data.name}</p>
         <p>{data.author}</p>
@@ -15,12 +15,12 @@ function Card({ data }) {
       <div className="flex items-center justify-between">
         <Link
           className="rounded-md inline-block px-[1.3rem] py-[0.3rem] bg-[#2e2e2e] hover:bg-[#101010] duration-200"
-          to={`/${data.name.trim().replaceAll(" ", "-")}`}
+          to={`/${data.id}`}
         >
           View
         </Link>
 
-        <Link to={`/${data.name.trim().replaceAll(" ", "-")}/edit`}>Edit</Link>
+        <Link to={`/edit/${data.id}`}>Edit</Link>
       </div>
     </div>
   );
