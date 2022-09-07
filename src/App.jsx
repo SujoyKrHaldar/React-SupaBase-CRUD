@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+// import { Toaster } from "react-hot-toast";
 
 import Home from "./pages/Home";
 import Create from "./pages/Create";
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
       <Layout>
+        {/* <Toaster /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<View />} />

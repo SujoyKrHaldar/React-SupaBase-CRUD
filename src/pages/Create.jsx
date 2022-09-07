@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AiFillInfoCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import supabase from "../config/supabase";
 
 function Create() {
@@ -32,6 +33,8 @@ function Create() {
 
     if (res.error) {
       setError(res.error.message + " !");
+
+      // toast.error(`${res.error.message}! error`);
     }
 
     if (res.data) {

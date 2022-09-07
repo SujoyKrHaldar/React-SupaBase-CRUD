@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiFillInfoCircle } from "react-icons/ai";
 import { useParams, useNavigate } from "react-router-dom";
+// import toast from "react-hot-toast";
 import supabase from "../config/supabase";
 
 function Update() {

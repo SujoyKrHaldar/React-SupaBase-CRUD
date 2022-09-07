@@ -7,6 +7,12 @@ function Home() {
   const [errorMsg, setErrorMsg] = useState(null);
   const [fetchData, setFetchData] = useState(null);
 
+  const handelGlobalDelete = (id) => {
+    setFetchData((prevData) => {
+      return prevData.filter((d) => d.id !== id);
+    });
+  };
+
   const dataFetching = async () => {
     const { data, error } = await supabase
       .from("Books")
@@ -36,7 +42,7 @@ function Home() {
         {fetchData && fetchData.length > 0 ? (
           <div className="grid gap-4 mt-8 grid-cols-3">
             {fetchData.map((data) => (
-              <Card data={data} key={data.id} />
+              <Card info={data} key={data.id} onDelete={handelGlobalDelete} />
             ))}
           </div>
         ) : (
